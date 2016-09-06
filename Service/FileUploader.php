@@ -16,8 +16,8 @@ class FileUploader
     function __construct(Packages $assetPackages, $kernel_dir)
     {
         $this->assetPackages = $assetPackages;
-        $this->webDir = $kernel_dir.'\\..\\web\\';
-        $this->targetDir = 'uploads\\images\\summernote\\';
+        $this->webDir = $kernel_dir.'/../web/';
+        $this->targetDir = 'uploads/images/summernote/';
     }
 
     public function upload(UploadedFile $file)
