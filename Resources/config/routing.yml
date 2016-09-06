@@ -1,0 +1,4 @@
+
+pepsit36_summernote.api.upload:
+    path:     /upload
+    defaults: { _controller: Pepsit36SummernoteBundle:Api:upload }

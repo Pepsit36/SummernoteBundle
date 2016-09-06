@@ -1,0 +1,40 @@
+{% block summernote_javascript %}
+    {% spaceless %}
+        <script src="{{ asset('resources/summernote/summernote.min.js') }}"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('.summernote').summernote({
+                    callbacks: {
+                        onImageUpload: function (files) {
+                            sendFile(files[0], $(this));
+                        }
+                    }
+                });
+            });
+
+            function sendFile(file, editor) {
+                console.log(file);
+                console.log(editor);
+                var data = new FormData();
+                data.append("summernote_image", file);
+                $.ajax({
+                    data: data,
+                    type: "POST",
+                    url: '{{ path('pepsit36_summernote.api.upload') }}',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (returnData) {
+                        if (returnData.success) {
+                            console.log(returnData.url);
+                            editor.summernote('insertImage', returnData.url);
+                        } else {
+                            alert(returnData.message);
+                            console.log(returnData.message);
+                        }
+                    }
+                });
+            }
+        </script>
+    {% endspaceless %}
+{% endblock %}

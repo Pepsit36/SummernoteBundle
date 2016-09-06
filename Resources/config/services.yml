@@ -1,0 +1,17 @@
+services:
+    pepsit36_summernote.form.type.summernote:
+        class: Pepsite36\SummernoteBundle\Form\Type\SummernoteType
+        tags:
+            - { name: form.type, alias: summernote }
+
+    pepsit36_summernote.twig.extension.form:
+        class: Pepsit36\SummernoteBundle\Twig\Extension\FormExtension
+        arguments:
+            - '@twig'
+        tags:
+            - { name: twig.extension }
+
+    pepsit36_summernote.file_upload:
+        class: Pepsit36\SummernoteBundle\Service\FileUploader
+        arguments:
+            - '@assets.packages'
