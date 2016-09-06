@@ -52,7 +52,7 @@ class TestFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         ...
-        $builder->add('test_content', 'summernote');
+        $builder->add('test_content', SummernoteType::class);
         ...
 
     }
@@ -65,8 +65,8 @@ You need also to add some twig tags in your templates to import all CSS and JS n
 ```twig
 ...
 {# Pepsit36/Summernote CSS #}
-{{ summernote_form_stylesheet(form) }}
+{{ summernote_form_stylesheet() }}
 
 {# Pepsit36/Summernote JS #}
-{{ summernote_form_javascript(form) }}
+{{ summernote_form_javascript() }}
 ```

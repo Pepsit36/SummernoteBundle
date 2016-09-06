@@ -17,7 +17,7 @@ class FileUploader
     {
         $this->assetPackages = $assetPackages;
         $this->rootDir = '%kernel.root_dir%/../';
-        $this->targetDir = 'uploads/images/summernote/dsfdsfdsfds';
+        $this->targetDir = 'uploads/images/summernote/';
     }
 
     public function upload(UploadedFile $file)

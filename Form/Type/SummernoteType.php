@@ -9,11 +9,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class SummernoteType extends AbstractType
 {
-    public function setDefaultOptions(OptionsResolver $resolver)
-    {
-
-    }
-
     public function getParent()
     {
         return TextareaType::class;
