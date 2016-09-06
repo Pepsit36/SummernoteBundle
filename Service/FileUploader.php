@@ -10,26 +10,26 @@ class FileUploader
 {
 
     private $assetPackages;
-    private $rootDir;
+    private $webDir;
     private $targetDir;
 
-    function __construct(Packages $assetPackages)
+    function __construct(Packages $assetPackages, $kernel_dir)
     {
         $this->assetPackages = $assetPackages;
-        $this->rootDir = '%kernel.root_dir%/../';
-        $this->targetDir = 'uploads/images/summernote/';
+        $this->webDir = $kernel_dir.'\\..\\web\\';
+        $this->targetDir = 'uploads\\images\\summernote\\';
     }
 
     public function upload(UploadedFile $file)
     {
         $fileName = md5(uniqid()).'.'.$file->guessExtension();
         $file->move(
-            $this->rootDir.$this->targetDir,
+            $this->webDir.$this->targetDir,
             $fileName
         );
 
         return array(
-            'webPath' => $this->assetPackages->getUrl($this->targetDir.'/'.$fileName),
+            'webPath' => $this->assetPackages->getUrl($this->targetDir.'\\'.$fileName),
             'fileName' => $fileName,
         );
     }

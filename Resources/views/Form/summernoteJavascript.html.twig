@@ -13,8 +13,6 @@
             });
 
             function sendFile(file, editor) {
-                console.log(file);
-                console.log(editor);
                 var data = new FormData();
                 data.append("summernote_image", file);
                 $.ajax({
@@ -26,11 +24,9 @@
                     contentType: false,
                     success: function (returnData) {
                         if (returnData.success) {
-                            console.log(returnData.url);
                             editor.summernote('insertImage', returnData.url);
                         } else {
                             alert(returnData.message);
-                            console.log(returnData.message);
                         }
                     }
                 });
