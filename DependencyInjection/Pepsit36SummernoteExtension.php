@@ -32,6 +32,8 @@ class Pepsit36SummernoteExtension extends Extension implements PrependExtensionI
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter($this->getAlias().'.widget.config', $config);
     }
 
     /**
@@ -41,6 +43,7 @@ class Pepsit36SummernoteExtension extends Extension implements PrependExtensionI
     {
         $configs = $container->getExtensionConfig($this->getAlias());
         $this->processConfiguration(new Configuration(), $configs);
+
         $this->configureTwigBundle($container);
     }
 
