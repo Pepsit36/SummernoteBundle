@@ -1,6 +1,7 @@
 # Pepsit36/SummernoteBundle
 This bundle provides a form type based on Summernote, a WYSWYG editor
 
+[![Build Status](https://travis-ci.org/Pepsit36/SummernoteBundle.svg?branch=master)](https://travis-ci.org/Pepsit36/SummernoteBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d8c5fa10-ac58-405c-97d4-d5e17371c221/mini.png)](https://insight.sensiolabs.com/projects/d8c5fa10-ac58-405c-97d4-d5e17371c221)
 [![Latest Stable Version](https://poser.pugx.org/pepsit36/summernotebundle/v/stable)](https://packagist.org/packages/pepsit36/summernotebundle)
 [![Total Downloads](https://poser.pugx.org/pepsit36/summernotebundle/downloads)](https://packagist.org/packages/pepsit36/summernotebundle)
