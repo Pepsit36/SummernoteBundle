@@ -1,5 +1,7 @@
 # Pepsit36/SummernoteBundle
-This bundle provides a form type based on Summernote, a WYSWYG editor
+This bundle provides a form type based on Summernote, a WYSIWYG editor. (A CKEditor and TinyMCE alternative and Open Source).
+
+Proudly develop by [Sébastien Duplessy](https://www.duplessy.eu).
 
 [![Build Status](https://travis-ci.org/Pepsit36/SummernoteBundle.svg?branch=master)](https://travis-ci.org/Pepsit36/SummernoteBundle)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d8c5fa10-ac58-405c-97d4-d5e17371c221/mini.png)](https://insight.sensiolabs.com/projects/d8c5fa10-ac58-405c-97d4-d5e17371c221)
@@ -40,7 +42,7 @@ pepsit36_summernote:
 
 Minimal Configuration
 ---------------------
-You must to execute a update of your database for add image's entity.
+You must to execute a update of your database to add images' entity.
 ```command
 doctrine:schema:update --force
 ```
@@ -50,7 +52,7 @@ and you can extract his `dist` folder on the folder `YourApp/web/resources/summe
 
 Additional Configuration
 ------------------------
-Pepsit36/Summernote supports some configuration parameters. This parameters can be configured in config.yml.
+Pepsit36/Summernote supports some configuration parameters. These parameters can be configured in config.yml.
 
 * **width**: This is the width of Summernote widget (default: 0)
 ```yml
@@ -66,7 +68,7 @@ pepsit36_summernote:
     height: 0
 ```
 
-* **focus**: This will focus editable area after initialize Summernote widget.
+* **focus**: This will focus editable area after initializing Summernote widget.
 ```yml
 pepsit36_summernote:
     ...
@@ -146,7 +148,7 @@ class TestFormType extends AbstractType
 }
 ```
 
-You need also to add some twig tags in your templates to import all CSS and JS needed to make summernote work:
+You also need to add some twig tags in your templates to import all CSS and JS needed to make summernote work:
 ```twig
 ...
 {# Pepsit36/Summernote CSS #}
