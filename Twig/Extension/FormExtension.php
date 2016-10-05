@@ -2,8 +2,6 @@
 
 namespace Pepsit36\SummernoteBundle\Twig\Extension;
 
-use Symfony\Bridge\Twig\Form\TwigRendererInterface;
-use Symfony\Component\Form\FormView;
 
 class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
@@ -44,7 +42,6 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
         foreach ($this->widgetConfig['toolbar'] as $buttonsGroup) {
             $toolbar[] = array($buttonsGroup['name'], $buttonsGroup['buttons']);
         }
-
 
 
         return $this->template->renderBlock(

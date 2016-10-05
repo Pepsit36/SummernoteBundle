@@ -2,7 +2,6 @@
 
 namespace Pepsit36\SummernoteBundle\Service;
 
-use Symfony\Bridge\Twig\Extension\AssetExtension;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -13,7 +12,7 @@ class FileUploader
     private $webDir;
     private $targetDir;
 
-    function __construct(Packages $assetPackages, $kernel_dir)
+    public function __construct(Packages $assetPackages, $kernel_dir)
     {
         $this->assetPackages = $assetPackages;
         $this->webDir = $kernel_dir.'/../web/';

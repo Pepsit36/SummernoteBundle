@@ -72,7 +72,7 @@ class SummernoteImage
     /**
      * @return file
      */
-    function getFile()
+    public function getFile()
     {
         return $this->file;
     }
@@ -80,7 +80,7 @@ class SummernoteImage
     /**
      * @param $file
      */
-    function setFile($file)
+    public function setFile($file)
     {
         $this->file = $file;
     }
