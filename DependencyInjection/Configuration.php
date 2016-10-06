@@ -137,6 +137,14 @@ class Configuration implements ConfigurationInterface
             ->end()
             ->defaultValue($defaultColors)
             ->end()
+            //Summernote Path
+            ->scalarNode('summernote_path')
+            ->defaultValue('resources/summernote')
+            ->end()
+            //Images Path
+            ->scalarNode('images_path')
+            ->defaultValue('uploads/images/summernote')
+            ->end()
             //End RootNote
             ->end();
 

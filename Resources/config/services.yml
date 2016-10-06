@@ -17,3 +17,4 @@ services:
         arguments:
             - '@assets.packages'
             - '%kernel.root_dir%'
+            - '%pepsit36_summernote.widget.config%'

@@ -55,6 +55,7 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
                 'pepsit36_summernote_config_fontNames' => json_encode($this->widgetConfig['fontNames']),
                 'pepsit36_summernote_config_fontSizes' => json_encode($this->widgetConfig['fontSizes']),
                 'pepsit36_summernote_config_colors' => json_encode($this->widgetConfig['colors']),
+                'pepsit36_summernote_config_summernote_path' => $this->widgetConfig['summernote_path'],
             )
         );
     }
@@ -65,7 +66,9 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
 
         return $this->template->renderBlock(
             'summernote_stylesheet',
-            array()
+            array(
+                'pepsit36_summernote_config_summernote_path' => $this->widgetConfig['summernote_path'],
+            )
         );
     }
 

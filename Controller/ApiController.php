@@ -33,7 +33,7 @@ class ApiController extends Controller
             $logger = $this->get('logger');
             $logger->error('Error occurred during the image upload : '.$e->getMessage());
 
-            return new JsonResponse(array('success' => false, 'message' => 'error occurred during the image upload.'));
+            return new JsonResponse(array('success' => false, 'message' => 'Error occurred during the image upload.'));
         }
     }
 

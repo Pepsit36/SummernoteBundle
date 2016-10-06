@@ -13,13 +13,13 @@ Proudly develop by [Sébastien Duplessy](https://www.duplessy.eu).
 Requirements
 ------------
 Minimum requirements for this bundle:
-- Symfony 2.3
-- Twitter Bootstrap 3.0
-- JQuery 1.9
+* Symfony 2.3
+* Twitter Bootstrap 3.0
+* JQuery 1.9
 
 Installation
 ------------
-Add Pepsit36/SummernoteBundle to your application's `composer.json` file
+* Add Pepsit36/SummernoteBundle to your application's `composer.json` file
 ```json
 {
     "require": {
@@ -28,12 +28,12 @@ Add Pepsit36/SummernoteBundle to your application's `composer.json` file
 }
 ```
 
-Add Pepsit36/SummernoteBundle to your application's `AppKernel.php` file
+* Add Pepsit36/SummernoteBundle to your application's `AppKernel.php` file
 ```php
 new Pepsit36\SummernoteBundle\Pepsit36SummernoteBundle(),
 ```
 
-Add routing information to your application's `routing.yml`:
+* Add routing information to your application's `routing.yml`:
 ```yml
 pepsit36_summernote:
     resource: "@Pepsit36SummernoteBundle/Resources/config/routing.yml"
@@ -42,17 +42,28 @@ pepsit36_summernote:
 
 Minimal Configuration
 ---------------------
-You must to execute a update of your database to add images' entity.
+* You must to execute a update of your database to add images' entity.
 ```command
 doctrine:schema:update --force
 ```
 
-You need to download the package on summernote's website : http://summernote.org/ 
-and you can extract his `dist` folder on the folder `YourApp/web/resources/summernote`
+* You need to download the package on summernote's website : http://summernote.org/ 
+and you can extract his `dist` folder on the folder `YourApp/web/resources/summernote`, you can change it in your `config.yml`, for more information see below.
+
+* Please consider installing yourself the dependence of Summernote (Bootstrap + JQuery) in the page you'll use it. Please refer to [Bootstrap's Website](http://getbootstrap.com/getting-started/) and [JQuery's Website](http://jquery.com/download/) for more informations.
+```html
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script> 
+```
+
+* For security reasons you need to create the folder manually where the picture will be storage. The default folder is `YourApp/web/uploads/images/summernote`, you can change it in your `config.yml`, for more information see below.
 
 Additional Configuration
 ------------------------
-Pepsit36/Summernote supports some configuration parameters. These parameters can be configured in config.yml.
+Pepsit36/Summernote supports some configuration parameters. These parameters can be configured in config.yml. See below the default configuration.
 
 * **width**: This is the width of Summernote widget (default: 0)
 ```yml
@@ -127,6 +138,20 @@ pepsit36_summernote:
         - ['#CE0000', '#E79439', '#EFC631', '#6BA54A', '#4A7B8C', '#3984C6', '#634AA5', '#A54A7B']
         - ['#9C0000', '#B56308', '#BD9400', '#397B21', '#104A5A', '#085294', '#311873', '#731842']
         - ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031']
+```
+
+* **summernote_path**: This will configure the path of summernote's folder.
+```yml
+pepsit36_summernote:
+    ...
+    summernote_path: 'resources/summernote'
+```
+
+* **images_path**: This will configure the path where will be storage uploaded images.
+```yml
+pepsit36_summernote:
+    ...
+    images_path: 'uploads/images/summernote'
 ```
 
 Usage
