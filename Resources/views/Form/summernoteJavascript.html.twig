@@ -1,23 +1,11 @@
 {% block summernote_javascript %}
     {% spaceless %}
-        <script src="{{ asset(pepsit36_summernote_config_summernote_path ~ '/summernote.min.js') }}"></script>
+        <script src="{{ asset(pepsit36_summernote_config_path ~ '/summernote.min.js') }}"></script>
         <script type="text/javascript">
             $(function () {
-                $('.summernote').summernote({
-                    width: {{ pepsit36_summernote_config_width ?: 'null' }},
-                    height: {{ pepsit36_summernote_config_height ?: 'null' }},
-                    focus: {{ pepsit36_summernote_config_focus ? 'true' : 'false' }},
-                    toolbar: {{ pepsit36_summernote_config_toolbar | raw }},
-                    styleTags: {{ pepsit36_summernote_config_styleTags | raw }},
-                    fontNames: {{ pepsit36_summernote_config_fontNames | raw }},
-                    fontSizes: {{ pepsit36_summernote_config_fontSizes | raw }},
-                    colors: {{ pepsit36_summernote_config_colors | raw }},
-                    callbacks: {
-                        onImageUpload: function (files) {
-                            sendFile(files[0], $(this));
-                        }
-                    }
-                });
+                $('.summernote').summernote(
+                    {{ pepsit36_summernote_config_form_options | raw }}
+                );
             });
 
             function sendFile(file, editor) {

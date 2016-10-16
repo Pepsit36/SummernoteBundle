@@ -30,37 +30,29 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
         );
     }
 
-    public function renderJavascript()
+    public function renderJavascript($form = null)
     {
         $this->template = $this->environment->loadTemplate(
             'Pepsit36SummernoteBundle:Form:summernoteJavascript.html.twig'
         );
 
-
-        //Toolbar
-        $toolbar = array();
-        foreach ($this->widgetConfig['toolbar'] as $buttonsGroup) {
-            $toolbar[] = array($buttonsGroup['name'], $buttonsGroup['buttons']);
+        $formOptions = array();
+        foreach ($form as $child) {
+            if (isset($child->vars['pepsit36_summernote_form_options'])) {
+                $formOptions = $child->vars['pepsit36_summernote_form_options'];
+            }
         }
-
 
         return $this->template->renderBlock(
             'summernote_javascript',
             array(
-                'pepsit36_summernote_config_width' => $this->widgetConfig['width'],
-                'pepsit36_summernote_config_height' => $this->widgetConfig['height'],
-                'pepsit36_summernote_config_focus' => $this->widgetConfig['focus'],
-                'pepsit36_summernote_config_toolbar' => json_encode($toolbar),
-                'pepsit36_summernote_config_styleTags' => json_encode($this->widgetConfig['styleTags']),
-                'pepsit36_summernote_config_fontNames' => json_encode($this->widgetConfig['fontNames']),
-                'pepsit36_summernote_config_fontSizes' => json_encode($this->widgetConfig['fontSizes']),
-                'pepsit36_summernote_config_colors' => json_encode($this->widgetConfig['colors']),
-                'pepsit36_summernote_config_summernote_path' => $this->widgetConfig['summernote_path'],
+                'pepsit36_summernote_config_form_options' => $this->generateOptions($formOptions),
+                'pepsit36_summernote_config_path' => $this->widgetConfig['summernote_path'],
             )
         );
     }
 
-    public function renderStylesheet()
+    public function renderStylesheet($form = null)
     {
         $this->template = $this->environment->loadTemplate('@Pepsit36Summernote/Form/summernoteStylesheet.html.twig');
 
@@ -75,9 +67,61 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
     /**
      * {@inheritdoc}
      */
-    public
-    function getName()
+    public function getName()
     {
         return 'pepsit3summernote.twig.extension.form';
+    }
+
+    private function generateOptions($formOptions)
+    {
+        //Toolbar
+        $toolbar = array();
+        foreach ($this->widgetConfig['toolbar'] as $buttonsGroup) {
+            $toolbar[] = array($buttonsGroup['name'], $buttonsGroup['buttons']);
+        }
+
+
+        $options = array(
+            'width' => $this->widgetConfig['width'],
+            'height' => $this->widgetConfig['height'],
+            'focus' => ($this->widgetConfig['focus']) ? 'true' : 'false',
+            'toolbar' => $toolbar,
+            'styleTags' => $this->widgetConfig['styleTags'],
+            'fontNames' => $this->widgetConfig['fontNames'],
+            'fontSizes' => $this->widgetConfig['fontSizes'],
+            'colors' => $this->widgetConfig['colors'],
+        );
+
+        if (isset($formOptions['others'])) {
+            $options = array_merge($options, $formOptions['others']);
+        }
+
+        $optionsJson = '{';
+        $optionsJson .= $this->generateJson($options, $nbElem);
+        $optionsJson .= ($nbElem > 0) ? ',' : ''.'callbacks: {onImageUpload: function (files) {sendFile(files[0], $(this));}}';
+        $optionsJson .= '}';
+
+        return $optionsJson;
+    }
+
+    private function generateJson($options, &$nbElem)
+    {
+        $json = '';
+        $i = 0;
+        $nbElem = 0;
+        foreach ($options as $key => $value) {
+            if (!empty($value) && $value != "[]" && $value != "false") {
+                $json .= $key.': '.json_encode($value);
+                $nbElem++;
+
+                if ($i != count($options) - 1) {
+                    $json .= ','."\n";
+                }
+            }
+
+            $i++;
+        }
+
+        return $json;
     }
 }
