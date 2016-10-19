@@ -90,6 +90,7 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
             'fontNames' => $this->widgetConfig['fontNames'],
             'fontSizes' => $this->widgetConfig['fontSizes'],
             'colors' => $this->widgetConfig['colors'],
+            'placeholder' => $this->widgetConfig['placeholder'],
         );
 
         if (isset($formOptions['others'])) {

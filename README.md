@@ -140,6 +140,13 @@ pepsit36_summernote:
         - ['#630000', '#7B3900', '#846300', '#295218', '#083139', '#003163', '#21104A', '#4A1031']
 ```
 
+* **placeholder**: This will configure the placeholder.
+```yml
+pepsit36_summernote:
+    ...
+    placeholder: ''
+```
+
 * **summernote_path**: This will configure the path of summernote's folder.
 ```yml
 pepsit36_summernote:
