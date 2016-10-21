@@ -110,14 +110,15 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
         $json = '';
         $i = 0;
         $nbElem = 0;
+
         foreach ($options as $key => $value) {
             if (!empty($value) && $value != "[]" && $value != "false") {
-                $json .= $key.': '.json_encode($value);
-                $nbElem++;
-
-                if ($i != count($options) - 1) {
+                if ($nbElem > 0) {
                     $json .= ','."\n";
                 }
+
+                $json .= $key.': '.json_encode($value);
+                $nbElem++;
             }
 
             $i++;

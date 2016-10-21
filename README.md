@@ -180,12 +180,12 @@ class TestFormType extends AbstractType
 }
 ```
 
-You also need to add some twig tags in your templates to import all CSS and JS needed to make summernote work:
+You also need to add some twig tags in your templates to import all CSS and JS needed to make summernote work: (form is your formview)
 ```twig
 ...
 {# Pepsit36/Summernote CSS #}
-{{ summernote_form_stylesheet() }}
+{{ summernote_form_stylesheet(form) }}
 
 {# Pepsit36/Summernote JS #}
-{{ summernote_form_javascript() }}
+{{ summernote_form_javascript(form) }}
 ```
