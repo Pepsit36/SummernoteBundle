@@ -99,7 +99,8 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
 
         $optionsJson = '{';
         $optionsJson .= $this->generateJson($options, $nbElem);
-        $optionsJson .= ($nbElem > 0) ? ',' : ''.'callbacks: {onImageUpload: function (files) {sendFile(files[0], $(this));}}';
+        $optionsJson .= ($nbElem > 0) ? ',' : '';
+        $optionsJson .= 'callbacks: {onImageUpload: function (files) {sendFile(files[0], $(this));}}';
         $optionsJson .= '}';
 
         return $optionsJson;
