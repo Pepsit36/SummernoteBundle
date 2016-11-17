@@ -10,15 +10,17 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class SummernoteType extends AbstractType
-{
-    public function getParent()
-    {
-        return TextareaType::class;
+class SummernoteType extends AbstractType {
+    public function getParent() {
+        $symfonyVersion = explode('.', \Symfony\Component\HttpKernel\Kernel::VERSION)[0];
+        if ($symfonyVersion == 2) {
+            return 'textarea';
+        } else {
+            return TextareaType::class;
+        }
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(
             array(
                 'pepsit36_summernote_form_options' => '',
@@ -27,21 +29,18 @@ class SummernoteType extends AbstractType
     }
 
 
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    {
+    public function buildView(FormView $view, FormInterface $form, array $options) {
         $view->vars['pepsit36_summernote_form_options'] = $options['pepsit36_summernote_form_options'];
     }
 
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->setAttribute('pepsit36_summernote_form_options', $options['pepsit36_summernote_form_options']);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
-    {
+    public function getName() {
         return 'summernote';
     }
 

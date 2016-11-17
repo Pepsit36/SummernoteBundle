@@ -1,6 +1,6 @@
 services:
     pepsit36_summernote.form.type.summernote:
-        class: Pepsite36\SummernoteBundle\Form\Type\SummernoteType
+        class: Pepsit36\SummernoteBundle\Form\Type\SummernoteType
         tags:
             - { name: form.type, alias: summernote }
 

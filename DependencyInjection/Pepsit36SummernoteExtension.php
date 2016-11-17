@@ -13,8 +13,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class Pepsit36SummernoteExtension extends Extension implements PrependExtensionInterface
-{
+class Pepsit36SummernoteExtension extends Extension implements PrependExtensionInterface {
 
     /**
      * @var string
@@ -25,8 +24,7 @@ class Pepsit36SummernoteExtension extends Extension implements PrependExtensionI
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
-    {
+    public function load(array $configs, ContainerBuilder $container) {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
@@ -39,25 +37,23 @@ class Pepsit36SummernoteExtension extends Extension implements PrependExtensionI
     /**
      * {@inheritDoc}
      */
-    public function prepend(ContainerBuilder $container)
-    {
+    public function prepend(ContainerBuilder $container) {
         $configs = $container->getExtensionConfig($this->getAlias());
         $this->processConfiguration(new Configuration(), $configs);
 
         $this->configureTwigBundle($container);
     }
 
-    protected function configureTwigBundle(ContainerBuilder $container)
-    {
+    protected function configureTwigBundle(ContainerBuilder $container) {
 
         foreach (array_keys($container->getExtensions()) as $name) {
             $symfonyVersion = explode('.', \Symfony\Component\HttpKernel\Kernel::VERSION)[0];
             switch ($name) {
                 case 'twig':
-                    if ($symfonyVersion == 3) {
-                        $twig = array('form_themes' => array($this->formTypeTemplate));
-                    } else {
+                    if ($symfonyVersion == 2) {
                         $twig = array('form' => array('resources' => array($this->formTypeTemplate)));
+                    } else {
+                        $twig = array('form_themes' => array($this->formTypeTemplate));
                     }
 
 
