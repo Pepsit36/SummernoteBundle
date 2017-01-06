@@ -44,5 +44,13 @@ class SummernoteType extends AbstractType {
         return 'summernote';
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getGlobals()
+    {
+        return array();
+    }
+
 
 }
