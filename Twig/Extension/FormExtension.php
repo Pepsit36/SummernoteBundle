@@ -127,4 +127,12 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
 
         return $json;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGlobals()
+    {
+        return array();
+    }
 }
