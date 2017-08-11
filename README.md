@@ -147,7 +147,7 @@ pepsit36_summernote:
     placeholder: ''
 ```
 
-* **summernote_path**: This will configure the path of summernote's folder.
+* **summernote_path**: This will configure the path of summernote's folder, if false the summernote's files will be not include. (default: false)
 ```yml
 pepsit36_summernote:
     ...
@@ -183,7 +183,7 @@ class TestFormType extends AbstractType
 You also need to add some twig tags in your templates to import all CSS and JS needed to make summernote work: (form is your formview)
 ```twig
 ...
-{# Pepsit36/Summernote CSS #}
+{# Pepsit36/Summernote CSS - usefull only if summernote_path is configurate with one path #}
 {{ summernote_form_stylesheet(form) }}
 
 {# Pepsit36/Summernote JS #}

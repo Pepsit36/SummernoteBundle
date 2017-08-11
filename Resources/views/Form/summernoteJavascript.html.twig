@@ -1,10 +1,12 @@
 {% block summernote_javascript %}
     {% spaceless %}
-        <script src="{{ asset(pepsit36_summernote_config_path ~ '/summernote.min.js') }}"></script>
+        {% if pepsit36_summernote_config_path != false %}
+            <script src="{{ asset(pepsit36_summernote_config_path ~ '/summernote.min.js') }}"></script>
+        {% endif %}
         <script type="text/javascript">
             $(function () {
                 $('.summernote').summernote(
-                    {{ pepsit36_summernote_config_form_options | raw }}
+                        {{ pepsit36_summernote_config_form_options | raw }}
                 );
             });
 
@@ -12,13 +14,13 @@
                 var data = new FormData();
                 data.append("summernote_image", file);
                 $.ajax({
-                    data: data,
-                    type: "POST",
-                    url: '{{ path('pepsit36_summernote.api.upload') }}',
-                    cache: false,
+                    data       : data,
+                    type       : "POST",
+                    url        : '{{ path('pepsit36_summernote.api.upload') }}',
+                    cache      : false,
                     processData: false,
                     contentType: false,
-                    success: function (returnData) {
+                    success    : function (returnData) {
                         if (returnData.success) {
                             editor.summernote('insertImage', returnData.url);
                         } else {

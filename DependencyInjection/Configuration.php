@@ -77,7 +77,7 @@ class Configuration implements ConfigurationInterface
             ->end()
             //Summernote Path
             ->scalarNode('summernote_path')
-            ->defaultValue('resources/summernote')
+            ->defaultValue(false)
             ->end()
             //Placeholder
             ->scalarNode('placeholder')

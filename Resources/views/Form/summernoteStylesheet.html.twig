@@ -1,5 +1,7 @@
 {% block summernote_stylesheet %}
     {% spaceless %}
-        <link rel="stylesheet" href="{{ asset(pepsit36_summernote_config_summernote_path ~ '/summernote.css') }}"/>
+        {% if pepsit36_summernote_config_path != false %}
+            <link rel="stylesheet" href="{{ asset(pepsit36_summernote_config_summernote_path ~ '/summernote.css') }}"/>
+        {% endif %}
     {% endspaceless %}
 {% endblock %}
