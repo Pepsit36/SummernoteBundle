@@ -59,7 +59,7 @@ class FormExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
         return $this->template->renderBlock(
             'summernote_stylesheet',
             array(
-                'pepsit36_summernote_config_summernote_path' => $this->widgetConfig['summernote_path'],
+                'pepsit36_summernote_config_path' => $this->widgetConfig['summernote_path'],
             )
         );
     }
